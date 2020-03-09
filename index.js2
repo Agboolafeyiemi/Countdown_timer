@@ -4,9 +4,13 @@ const playing = document.getElementById("play");
 const pausing = document.getElementById("pause");
 const resetting = document.getElementById("reset");
 
+playing.addEventListener("click", play);
+pausing.addEventListener("click", pause);
+resetting.addEventListener("click", resetTimer);
 
 let countdown;
 
+document.customForm.addEventListener("submit",startTimer)
 
 function startTimer(e) {
   e.preventDefault();
@@ -14,19 +18,30 @@ function startTimer(e) {
   timer(min * 60);
   this.reset();
   playing.innerHTML = "Playing";
+  //timer(seconds);
   if (pausing.textContent === "Paused" || reset === true) {
     pausing.innerHTML = "Pause";
     endTime.classList.remove("timeStyle");
   }
-}
-function play() {
-  if (playing) {
-    let timeNow = timeRunning.innerHTML;
-    let timeLeft = parseInt(timeNow + 0.5);
-    timer(timeLeft * 60);
-    pausing.innerHTML = "Pause";
-  } 
-}
+};
+function play (e) {
+  console.log(`fghjk`);
+    if (playing) {
+      console.log(`dfghjk`)
+      // let formInput = document.getElementsByName("minutes");
+      // console.log(formInput);
+      // const min = this.formInput.value;
+      const minutes = Math.floor(seconds / 60);
+  const reminderSeconds = seconds % 60;
+       displayTimeLeft(time);
+  }
+};
+// function startTimer() {
+
+//   //const seconds = parseInt(this.dataset.time);
+//   const seconds =
+
+// }
 
 function timer(seconds) {
   clearInterval(countdown);
@@ -71,7 +86,8 @@ function pause() {
     pausing.textContent = "Paused";
     endTime.textContent = "the time have been paused";
     clearInterval(countdown); // stop the clock
-    playing.innerHTML = "Resume";
+    playing.innerHTML = "Play";
+  
   }
 }
 
@@ -83,8 +99,3 @@ function resetTimer() {
   endTime.classList.add("timeStyle");
   reset = true;
 }
-
-playing.addEventListener("click", play);
-pausing.addEventListener("click", pause);
-resetting.addEventListener("click", resetTimer);
-document.customForm.addEventListener("submit", startTimer);
