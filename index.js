@@ -10,7 +10,7 @@ let countdown;
 
 function startTimer(e) {
   e.preventDefault();
-  const min = this.minutes.value;
+  const min = Math.abs(this.minutes.value);
   timer(min * 60);
   this.reset();
   playing.innerHTML = "Playing";
