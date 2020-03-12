@@ -58,3 +58,11 @@ body {
 .form-section input:focus {
   outline: none;
 }
+@media (max-width: 500px) {
+  #time{
+    font-size: 8rem;
+  }
+  .form-section input {width: 50%;
+
+  }
+}
